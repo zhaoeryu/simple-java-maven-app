@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '/usr/local/maven/bin/mvn -B -DskipTests clean package'
+                sh '/usr/local/maven/bin/mvn -s /usr/local/maven/conf/settings.xml -gs /usr/local/maven/conf/settings.xml -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh '/usr/local/maven/bin/mvn test'
+                sh '/usr/local/maven/bin/mvn -s /usr/local/maven/conf/settings.xml -gs /usr/local/maven/conf/settings.xml test'
             }
             post {
                 always {
